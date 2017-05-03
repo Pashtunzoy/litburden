@@ -92,6 +92,18 @@ return [
 
     'fallback_locale' => 'en',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Faker Locale Change Option
+    |--------------------------------------------------------------------------
+    |
+    | This changes Faker's locale which is used in database/factories/*
+    |
+    */
+
+    'faker_locale' => 'en_AU',
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

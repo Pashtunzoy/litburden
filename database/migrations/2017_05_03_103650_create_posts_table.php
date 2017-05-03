@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('title');
+            $table->string('location');
             $table->string('image-url');
             $table->string('want');
             $table->string('give');
