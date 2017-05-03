@@ -25,6 +25,7 @@ class PostsTableSeeder extends Seeder
                 'title' => $faker->sentence,
                 'location' => $faker->streetSuffix .' '. $faker->cityPrefix() .', '. $faker->stateAbbr .', '. $faker->country,
                 'image-url' => $faker->imageUrl($width = 800, $height = 400, 'cats'),
+                'email' => $faker->email,
                 'want' => $faker->word,
                 'give' => $faker->word,
                 'body' => $faker->paragraph(3),
