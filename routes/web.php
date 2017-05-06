@@ -13,8 +13,11 @@
 
 Route::group(['prefix' => 'api/v1/'], function () {
     Route::resource('posts', 'PostsController');
+
+    //Route::get('/register', 'RegistrationController@create');
+    Route::post('/register', 'RegistrationController@store');
+
+    Route::get('/login', 'SessionsController@create')->name('login');
+    Route::post('/login', 'SessionsController@store');
+    Route::get('/logout', 'SessionsController@destroy');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
