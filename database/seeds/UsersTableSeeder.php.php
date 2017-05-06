@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,18 +21,18 @@ class UsersTableSeeder extends Seeder
 
            for($i = 0; $i < 2; $i++){
                User::create(array(
-                   'username' => $faker->userName,
-                   'password' => Hash::make($faker->name . $faker->year),
                    'name' => $faker->name,
-                   'lastname' => $faker->lastName
+                   'email' => $faker->unique()->safeEmail,
+                   'password' => bcrypt('secret'),
+                   'remember_token' => str_random(10),
                ));
            }
 
            User::create(array(
-               'username' => 'foo',
-               'password' => Hash::make('password'),
                'name' => $faker->name,
-               'lastname' => $faker->lastName
+               'email' => $faker->unique()->safeEmail,
+               'password' => bcrypt('secret'),
+               'remember_token' => str_random(10),
            ));
     }
 }
