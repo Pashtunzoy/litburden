@@ -21,7 +21,7 @@ class PostsTableSeeder extends Seeder
 
         for($i = 0; $i < 10; $i++){
             Post::create(array(
-                'user_id' => (int) rand(1, 5),
+                'user_id' => (int) rand(1, 4),
                 'title' => $faker->sentence,
                 'location' => $faker->streetSuffix .' '. $faker->cityPrefix() .', '. $faker->stateAbbr .', '. $faker->country,
                 'image-url' => $faker->imageUrl($width = 800, $height = 400, 'cats'),

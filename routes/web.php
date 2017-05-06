@@ -11,6 +11,10 @@
 |
 */
 
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api/v1/'], function () {
     Route::resource('posts', 'PostsController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
