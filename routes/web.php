@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix' => 'api'], function () {
-    Route::get('posts', 'PostsController@index');
+    Route::resource('posts', 'PostsController');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
