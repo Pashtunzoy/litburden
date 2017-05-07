@@ -8,7 +8,7 @@ use JWTAuth;
 class AdsController extends Controller {
 
     public function __construct() {
-        $this->middleware('jwt.auth', ['only' => ['store', 'destroy']]);
+        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
     }
 
     public function index () {
@@ -54,13 +54,43 @@ class AdsController extends Controller {
         return $ad;
     }
 
+
+
+    public function update($id) {
+        if (! $user = JWTAuth::parseToken()->authenticate()) {
+            return response()->json(['msg' => 'User not found'], 404);
+        }
+        $ad = Ad::find($id);
+        if ($ad->user_id == $user->id) {
+            $ad->update([
+                'user_id' => $user->id,
+                'title' => request()->title,
+                'location' => request()->location,
+                'image-url' => request()['image-url'],
+                'want' => request()->want,
+                'give' => request()->give,
+                'body' => request()->body,
+            ]);
+            return response()->json($ad);
+        }
+
+        return response()->json(['msg' => 'Sorry You Are In The Wrong Place']);
+
+    }
+
+
+
     public function destroy(Ad $ad) {
 
         if (! $user = JWTAuth::parseToken()->authenticate()) {
             return response()->json(['msg' => 'User not found'], 404);
         }
 
-        $ad->delete();
-        return ['msg' => 'Ad successfuly delted', 'ad' => $ad];
+        if ($ad->user_id == $user->id) {
+            $ad->delete();
+            return response()->json(['msg' => 'Advert successfuly deleted']);
+        }
+        return response()->json(['msg' => 'Nothing can be found here']);
     }
+
 }
