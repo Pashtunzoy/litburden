@@ -21,25 +21,29 @@ class PostsController extends Controller {
 
 
     public function show (Post $post) {
-      //return view('posts.show', compact('post'));
-    }
-
-    public function create () {
-      //return view('posts.create');
+        if (! $post) {
+            return ['msg' => 'No Post with the ID'];
+        }
+        return $post;
     }
 
     public function store() {
-      /*$this->validate(request(), [
-        'title' => 'required',
-        'body' => 'required'
-    ]);
+          $this->validate(request(), [
+            'user_id' => 'required',
+            'title' => 'required',
+            'location' => 'required',
+            'image-url' => 'required',
+            'want' => 'required',
+            'give' => 'required',
+            'body' => 'required',
+        ]);
 
-      auth()->user()->publish(
-        new Post(request(['title', 'body']))
-      );
+        //dd(request(['title', 'location', 'image-url', 'want', 'give', 'body']));
 
-      $this->flash('Your post was published!');
+        $post = Post::create(request(['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body']));
 
-      return redirect('/'); */
+      //$this->flash('Your post was published!');
+
+      return $post;
   }
 }

@@ -18,7 +18,9 @@ use Illuminate\Http\Request;
 }); */
 
 Route::group(['prefix' => 'v1/'], function () {
-    Route::resource('posts', 'PostsController');
+    Route::resource('posts', 'PostsController', [
+        'except' => ['edit', 'create']
+    ]);
 
     //Route::get('/register', 'RegistrationController@create');
     Route::post('/register', 'RegistrationController@store');
