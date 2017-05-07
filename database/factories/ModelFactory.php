@@ -25,7 +25,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 
 
-/* Columns for the Post factory Model
+/* Columns for the Ad factory Model
     $table->string('user_id');
     $table->string('title');
     $table->string('location');
@@ -35,7 +35,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     $table->text('body');
  */
 
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
+$factory->define(App\Ad::class, function (Faker\Generator $faker) {
     return [
         'user_id' => (int) rand(1, 10),
         'title' => $faker->name,

@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 }); */
 
 Route::group(['prefix' => 'v1/'], function () {
-    Route::resource('posts', 'PostsController', [
+    Route::resource('ads', 'AdsController', [
         'except' => ['edit', 'create']
     ]);
 

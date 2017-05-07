@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Ad;
 
-class PostsTableSeeder extends Seeder
+class AdsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,13 @@ class PostsTableSeeder extends Seeder
     {
         Eloquent::unguard();
 
-        DB::table('posts')->delete();
+        DB::table('ads')->delete();
 
         $faker = Faker\Factory::create();
 
 
         for($i = 0; $i < 10; $i++){
-            Post::create(array(
+            Ad::create(array(
                 'user_id' => (int) rand(1, 4),
                 'title' => $faker->sentence,
                 'location' => $faker->streetSuffix .' '. $faker->cityPrefix() .', '. $faker->stateAbbr .', '. $faker->country,

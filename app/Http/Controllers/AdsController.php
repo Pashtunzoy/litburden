@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Ad;
 
 
-class PostsController extends Controller {
+class AdsController extends Controller {
 
     public function __construct() {
         //$this->middleware('auth')->except(['index', 'show']);
     }
 
     public function index () {
-        $posts = Post::latest()
+        $ads = Ad::latest()
             ->filter(request(['month', 'year']))
             ->get();
 
-        return $posts;
+        return $ads;
     }
 
 
-    public function show (Post $post) {
-        if (! $post) {
-            return ['msg' => 'No Post with the ID'];
+    public function show (Ad $ad) {
+        if (! $ad) {
+            return ['msg' => 'No Ad with the ID'];
         }
-        return $post;
+        return $ad;
     }
 
     public function store() {
@@ -40,10 +40,10 @@ class PostsController extends Controller {
 
         //dd(request(['title', 'location', 'image-url', 'want', 'give', 'body']));
 
-        $post = Post::create(request(['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body']));
+        $ad = Ad::create(request(['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body']));
 
-      //$this->flash('Your post was published!');
+      //$this->flash('Your ad was published!');
 
-      return $post;
+      return $ad;
   }
 }

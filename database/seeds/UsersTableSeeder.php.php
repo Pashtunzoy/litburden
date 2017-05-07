@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
            $faker = Faker\Factory::create();
 
 
-           for($i = 0; $i < 2; $i++){
+           for($i = 0; $i < 3; $i++){
                User::create(array(
                    'name' => $faker->name,
                    'email' => $faker->unique()->safeEmail,

@@ -7,10 +7,10 @@ use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model {
+class Ad extends Model {
 
     protected $fillable = ['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body'];
-    
+
     public function user() {
       return $this->belongsTo(User::class);
     }
