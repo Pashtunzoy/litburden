@@ -7,10 +7,6 @@ use App\Ad;
 
 class AdsController extends Controller {
 
-    public function __construct() {
-        //$this->middleware('auth')->except(['index', 'show']);
-    }
-
     public function index () {
         $ads = Ad::latest()
             ->filter(request(['month', 'year']))
@@ -28,7 +24,7 @@ class AdsController extends Controller {
     }
 
     public function store() {
-          $this->validate(request(), [
+        $this->validate(request(), [
             'user_id' => 'required',
             'title' => 'required',
             'location' => 'required',
@@ -38,12 +34,13 @@ class AdsController extends Controller {
             'body' => 'required',
         ]);
 
-        //dd(request(['title', 'location', 'image-url', 'want', 'give', 'body']));
-
         $ad = Ad::create(request(['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body']));
 
-      //$this->flash('Your ad was published!');
+        return $ad;
+    }
 
-      return $ad;
-  }
+    public function destroy(Ad $ad) {
+        $ad->delete();
+        return ['msg' => 'Ad successfuly delted', 'ad' => $ad];
+    }
 }
