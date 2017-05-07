@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Ad;
-
+use JWTAuth;
 
 class AdsController extends Controller {
+
+    public function __construct() {
+        $this->middleware('jwt.auth', ['only' => ['store', 'destroy']]);
+    }
 
     public function index () {
         $ads = Ad::latest()
@@ -25,7 +29,6 @@ class AdsController extends Controller {
 
     public function store() {
         $this->validate(request(), [
-            'user_id' => 'required',
             'title' => 'required',
             'location' => 'required',
             'image-url' => 'required',
@@ -34,12 +37,29 @@ class AdsController extends Controller {
             'body' => 'required',
         ]);
 
-        $ad = Ad::create(request(['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body']));
+        if (! $user = JWTAuth::parseToken()->authenticate()) {
+            return response()->json(['msg' => 'User not found'], 404);
+        }
+
+        $ad = Ad::create([
+            'user_id' => $user->id,
+            'title' => request()->title,
+            'location' => request()->location,
+            'image-url' => request()['image-url'],
+            'want' => request()->want,
+            'give' => request()->give,
+            'body' => request()->body,
+        ]);
 
         return $ad;
     }
 
     public function destroy(Ad $ad) {
+
+        if (! $user = JWTAuth::parseToken()->authenticate()) {
+            return response()->json(['msg' => 'User not found'], 404);
+        }
+
         $ad->delete();
         return ['msg' => 'Ad successfuly delted', 'ad' => $ad];
     }
