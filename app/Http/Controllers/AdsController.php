@@ -22,10 +22,11 @@ class AdsController extends Controller {
 
     public function show (Ad $ad) {
         if (! $ad) {
-            return ['msg' => 'No Ad with the ID'];
+            return ['msg' => 'Sorry Wrong Path'];
         }
         return $ad;
     }
+
 
     public function store() {
         $this->validate(request(), [
