@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
 
 class LoginController extends Controller {
 
@@ -14,14 +16,17 @@ class LoginController extends Controller {
             'password' => 'required'
         ]);
 
-        //$user = User::where('email', '=', request()->email)->first();
-        $email = request()->email;
-        $password = request()->password;
+        $credentials = request()->only('email', 'password');
 
-        if (! Auth::attempt(array('email' => $email, 'password' => $password))){
-            return "Wrong Credentials";
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['msg' => 'Invalid credentials'], 401);
+            }
+        } catch (Exception $e) {
+            return response()->json(['msg' => 'Could not create token'], 500);
         }
 
-        return User::where('email', '=', request()->email)->first();
+
+        return response()->json(['token' => $token]);
     }
 }
