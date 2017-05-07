@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 
 class RegistrationController extends Controller {
 
@@ -10,13 +11,20 @@ class RegistrationController extends Controller {
         //$this->middleware('guest');
     }
 
-    public function create()
-    {
-        return 'You are registered';
-    }
-
     public function store()
     {
-        return 'your account is saved';
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|unique:users|email',
+            'password' => 'required'
+        ]);
+
+        $user = User::create([
+                'name' => request()->name,
+                'email' => strtolower(request()->email),
+                'password' => bcrypt(request()->password)
+        ]);
+
+        return $user;
     }
 }
