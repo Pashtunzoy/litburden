@@ -1,5 +1,7 @@
 <template>
-  <div id="">
-    <h1>Hello from APP.VUE</h1>
-  </div>
+    <div>
+        <Navbar></Navbar>
+        <router-view></router-view>
+    </div>
 </template>
+<script>
