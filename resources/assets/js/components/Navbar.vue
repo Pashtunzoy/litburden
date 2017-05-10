@@ -39,10 +39,10 @@
           </a>
 
           <a class="nav-item">
-            Login
+            <router-link to="/login">Login</router-link>
           </a>
           <a class="nav-item">
-            Logout
+            <router-link to="/register">Login</router-link>
           </a>
           <a class="nav-item">
               <a class="button is-medium is-primary">Post an Ad</a>
