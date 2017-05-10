@@ -9,9 +9,9 @@ class RegistrationController extends Controller {
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required',
+            'name' => 'requiredmin:3|max:32',
             'email' => 'required|unique:users|email',
-            'password' => 'required|confirmed',
+            'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required'
         ]);
 
