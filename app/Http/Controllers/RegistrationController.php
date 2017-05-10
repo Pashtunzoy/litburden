@@ -8,8 +8,11 @@ class RegistrationController extends Controller {
 
     public function store()
     {
+        if (User::where('id', request()->id)) {
+            return ['err' => "This user is already registered!"];
+        }
         $this->validate(request(), [
-            'name' => 'requiredmin:3|max:32',
+            'name' => 'required|min:3|max:32',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required'

@@ -11,7 +11,7 @@
 
         <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
         <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-        <span class="nav-toggle">
+        <span class="nav-toggle is-active">
           <span></span>
           <span></span>
           <span></span>
@@ -19,7 +19,7 @@
 
         <!-- This "nav-menu" is hidden on mobile -->
         <!-- Add the modifier "is-active" to display it on mobile -->
-        <div class="nav-right nav-menu">
+        <div class="nav-right nav-menu is-active">
           <a class="nav-item">
             <router-link to="/">Home</router-link>
           </a>
@@ -41,8 +41,8 @@
           <a class="nav-item">
             <router-link to="/login">Login</router-link>
           </a>
-          <a class="nav-item">
-            <router-link to="/register">Login</router-link>
+          <a v-show="user_id" class="nav-item">
+            <router-link to="#">logout</router-link>
           </a>
           <a class="nav-item">
               <a class="button is-medium is-primary">Post an Ad</a>
@@ -51,3 +51,15 @@
       </nav>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+        user_id: false
+    }
+  }
+}
+</script>
+<style>
+</style>

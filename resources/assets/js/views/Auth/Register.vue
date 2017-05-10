@@ -95,7 +95,10 @@ export default {
             .then((res) => {
                 if (res.data.msg === 'registerd') {
                     this.$router.push('/login');
+                } else if (res.data.err) {
+                    this.error.email = [res.data.err];
                 }
+                console.log(res.data);
                 this.isFetching = false;
             })
             .catch((err) => {
