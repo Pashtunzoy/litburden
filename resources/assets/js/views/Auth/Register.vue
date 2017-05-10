@@ -7,34 +7,59 @@
 
                   <div class="field">
                     <p class="control has-icons-left">
-                      <input class="input" type="text" placeholder="Full Name">
+                      <input v-bind:class="{'is-danger': error.name, input: true}" type="text" placeholder="Full Name"
+                      v-model="form.name">
                       <span class="icon is-small is-left">
                         <i class="fa fa-id-card" aria-hidden="true"></i>
                       </span>
                     </p>
-                  </div>
-
-                  <div class="field">
-                    <p class="control has-icons-left">
-                      <input class="input" type="email" placeholder="Email">
-                      <span class="icon is-small is-left">
-                        <i class="fa fa-envelope"></i>
-                      </span>
+                    <p class="help is-danger" v-if="error.name">
+                        {{error.name[0]}}
                     </p>
                   </div>
 
                   <div class="field">
                     <p class="control has-icons-left">
-                      <input class="input" type="password" placeholder="Password">
+                      <input v-bind:class="{'is-danger': error.email, input: true}" type="email" placeholder="Email"
+                      v-model="form.email">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </p>
+                    <p class="help is-danger" v-if="error.email">
+                        {{error.email[0]}}
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <input v-bind:class="{'is-danger': error.password, input: true}" type="password" placeholder="Password"
+                      v-model="form.password">
                       <span class="icon is-small is-left">
                         <i class="fa fa-lock"></i>
                       </span>
+                    </p>
+                    <p class="help is-danger" v-if="error.password">
+                        {{error.password[0]}}
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <input v-bind:class="{'is-danger': error.password_confirmation, input: true}" type="password" placeholder="Password Confirmation"
+                      v-model="form.password_confirmation">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                    </p>
+                    <p class="help is-danger" v-if="error.password_confirmation">
+                        {{error.password_confirmation[0]}}
                     </p>
                   </div>
 
                   <div class="field">
                     <p class="control">
-                      <button class="button is-success">
+                      <button v-bind:class="{'is-loading': isFetching, 'button is-success': true}">
                         Register
                       </button>
                     </p>
@@ -47,15 +72,39 @@
 </template>
 
 <script>
+import { post } from '../../helpers/api';
+
 export default {
     data () {
         return {
-                hello: true
+            form: {
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: '',
+            },
+            error: {},
+            isFetching: false
         }
     },
     methods: {
       register () {
-        console.log('you registered!');
+        this.isFetching = true;
+        this.error = {};
+        post(`/api/v1/register`, this.form)
+            .then((res) => {
+                if (res.data.msg === 'registerd') {
+                    this.$router.push('/login');
+                }
+                this.isFetching = false;
+            })
+            .catch((err) => {
+                if (err) {
+                    this.error = err.response.data;
+                    console.log(err.response.data);
+                }
+                this.isFetching = false;
+            })
       }
     }
 }
