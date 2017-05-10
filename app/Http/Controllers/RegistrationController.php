@@ -11,7 +11,8 @@ class RegistrationController extends Controller {
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|unique:users|email',
-            'password' => 'required'
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
         ]);
 
         $user = User::create([
@@ -20,6 +21,9 @@ class RegistrationController extends Controller {
                 'password' => bcrypt(request()->password)
         ]);
 
-        return $user;
+        return [
+            'msg' => 'registerd',
+            'user' => $user
+        ];
     }
 }
