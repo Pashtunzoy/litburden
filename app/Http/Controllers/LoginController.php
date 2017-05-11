@@ -26,7 +26,8 @@ class LoginController extends Controller {
             return response()->json(['msg' => 'Could not create token'], 500);
         }
 
+        $user = User::where('email', request()->email)->first();
 
-        return response()->json(['token' => $token]);
+        return response()->json(['token' => $token, 'user_id' => $user->id]);
     }
 }
