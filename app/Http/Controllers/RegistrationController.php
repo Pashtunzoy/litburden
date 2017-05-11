@@ -8,9 +8,12 @@ class RegistrationController extends Controller {
 
     public function store()
     {
-        if (User::where('id', request()->id)) {
+
+        $checkUser = User::where('email', strtolower(request()->email))->first();
+        if ($checkUser) {
             return ['err' => "This user is already registered!"];
         }
+
         $this->validate(request(), [
             'name' => 'required|min:3|max:32',
             'email' => 'required|unique:users|email',
@@ -24,9 +27,6 @@ class RegistrationController extends Controller {
                 'password' => bcrypt(request()->password)
         ]);
 
-        return [
-            'msg' => 'registerd',
-            'user' => $user
-        ];
+        return [ 'msg' => 'registerd', 'user' => $user ];
     }
 }

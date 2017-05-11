@@ -46,6 +46,7 @@
 </template>
 <script>
 import { post } from '../../helpers/api';
+import flashMessage from '../../helpers/flashMessage';
 
 export default {
     data () {
@@ -62,17 +63,19 @@ export default {
       login () {
         this.isFetching = true;
         this.error = {};
+        this.form.email = this.form.email.toLowerCase();
         post(`/api/v1/login`, this.form)
             .then((res) => {
                 if (res.data.token) {
+                    flashMessage.setSuccess('You have successfuly logged In!');
                     this.$router.push('/');
                 }
                 this.isFetching = false;
             })
             .catch((err) => {
                 if (err) {
+                    flashMessage.setError('Sorry, Something went wrong while loggin In!');
                     this.error = err.response.data;
-                    console.log(err.response.data);
                 }
                 this.isFetching = false;
             })
