@@ -11,10 +11,12 @@
           <div class="message-header">
             <h1>{{flash.error}}</h1>
           </div>
-        </article>
-        <router-view class="container"></router-view>
+      </article>
+      <router-view></router-view>
+      <Footer></Footer>
     </div>
 </template>
+
 <script>
     import flashMessage from './helpers/flashMessage';
 
