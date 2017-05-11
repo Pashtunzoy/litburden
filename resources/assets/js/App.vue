@@ -16,7 +16,7 @@
     </div>
 </template>
 <script>
-import flashMessage from './helpers/flashMessage';
+    import flashMessage from './helpers/flashMessage';
 
     export default {
         data() {

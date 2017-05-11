@@ -34,15 +34,15 @@
               </span>
           </a>
 
-          <a class="nav-item">
+          <a class="nav-item" v-if="!authentic">
             <router-link to="/register">Register</router-link>
           </a>
 
-          <a class="nav-item">
+          <a class="nav-item" v-if="!authentic">
             <router-link to="/login">Login</router-link>
           </a>
-          <a v-show="user_id" class="nav-item">
-            <router-link to="#">logout</router-link>
+          <a @click.stop="logout" class="nav-item" v-if="authentic">
+            LogeOut
           </a>
           <a class="nav-item">
               <a class="button is-medium is-primary">Post an Ad</a>
@@ -53,13 +53,32 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-        user_id: false
+    import auth from '../store/auth';
+    import flashMessage from '../helpers/flashMessage';
+
+    export default {
+        created() {
+            auth.initialize();
+        },
+        data () {
+            return {
+                auth: auth.state,
+            }
+        },
+        computed: {
+            authentic() {
+                if (this.auth.api_token && this.auth.user_id) return true;
+                return false;
+            }
+        },
+        methods: {
+            logout() {
+                auth.remove();
+                flashMessage.setSuccess('You have successfuly logged Out!');
+                this.$router.push('/login');
+            }
+        }
     }
-  }
-}
 </script>
 <style>
 </style>

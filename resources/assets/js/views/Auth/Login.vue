@@ -45,8 +45,9 @@
   </div>
 </template>
 <script>
-import { post } from '../../helpers/api';
+import auth from '../../store/auth';
 import flashMessage from '../../helpers/flashMessage';
+import { post } from '../../helpers/api';
 
 export default {
     data () {
@@ -67,6 +68,7 @@ export default {
         post(`/api/v1/login`, this.form)
             .then((res) => {
                 if (res.data.token) {
+                    auth.set(res.data.token, res.data.user_id);
                     flashMessage.setSuccess('You have successfuly logged In!');
                     this.$router.push('/');
                 }
