@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function get(url) {
     return axios({
-        method: 'POST',
+        method: 'GET',
         url: url
     });
 }
