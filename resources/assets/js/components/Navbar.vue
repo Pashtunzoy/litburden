@@ -1,55 +1,39 @@
 <template>
-  <div>
-      <nav class="nav has-shadow">
-        <div class="nav-left">
-          <a class="nav-item">
-            <h5 class="title is-5">
-                <router-link to="/">LitBurden</router-link>
-            </h5>
-          </a>
-        </div>
+    <div>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+          <!-- This "navbar-toggle" hamburger menu is only visible on mobile -->
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-        <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-        <span class="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+        <router-link class="navbar-brand" to="/">LitBurden</router-link>
+
 
         <!-- This "nav-menu" is hidden on mobile -->
-        <!-- Add the modifier "is-active" to display it on mobile -->
-        <div class="nav-right nav-menu">
-          <a class="nav-item">
-            <router-link to="/">Home</router-link>
-          </a>
-
-          <a class="nav-item">
-              <span class="icon">
-                <i class="fa fa-user" aria-hidden="true"></i>
-              </span>
-              My LitBurden
-              <span class="icon is-small">
-                  <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
-              </span>
-          </a>
-
-          <a class="nav-item" v-if="!authentic">
-            <router-link to="/register">Register</router-link>
-          </a>
-
-          <a class="nav-item" v-if="!authentic">
-            <router-link to="/login">Login</router-link>
-          </a>
-          <a @click.stop="logout" class="nav-item" v-if="authentic">
-            LogeOut
-          </a>
-          <a class="nav-item">
-              <a class="button is-medium is-primary">Post an Ad</a>
-          </a>
-        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav ml-auto">
+             <li class="nav-item">
+               <router-link class="nav-link" to="/">Home</router-link>
+             </li>
+             <li class="nav-item">
+                 <a href="#" class="nav-link">My LitBurden</a>
+             </li>
+             <li class="nav-item" v-if="!authentic">
+               <router-link class="nav-link" to="/register">Register</router-link>
+             </li>
+             <li class="nav-item" v-if="!authentic">
+               <router-link class="nav-link" to="/login">Login</router-link>
+             </li>
+             <li @click.stop="logout" class="nav-item" v-if="authentic">
+               <a href="#" class="nav-link">Logout</a>
+             </li>
+             <li>
+                 <a class="btn btn-sm btn-success nav-link">Post an Ad</a>
+             </li>
+           </ul>
+         </div>
       </nav>
-  </div>
+    </div>
 </template>
 
 <script>
