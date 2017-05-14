@@ -1,6 +1,82 @@
+/*
+ * Globals
+ */
+/* @import "variables"; */
+/* @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; */
 
-//
-// If you need to modify Bulma variables to so before importing it!
 
-/* $link: $oc-blue-5; */
-@import './node_modules/bulma/bulma.sass';
+
+body {
+  min-height: 75rem; /* Can be removed; just added for demo purposes */
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background-color: #fff;
+  background-image: url("https://images.unsplash.com/photo-1437652633673-cc02b9c67a1b?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=&bg=");
+  height: 25rem;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+.album {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+  float: left;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+
+.card > img {
+    height: 150px !important; 
+    margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
+
+#flash-message {
+    bottom: 20px;
+    position: absolute;
+    right: 20px;
+    z-index: 10;
+    animation: flash-message 4s forwards;
+}
+
+@keyframes flash-message {
+    0%   {opacity: 1;}
+    100% {opacity: 0; display:none;}
+}
+
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
