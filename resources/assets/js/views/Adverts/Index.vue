@@ -1,5 +1,5 @@
 <template v-if="authentic">
-  <div id="">
+  <div id="container">
     <h1>From Index</h1>
   </div>
 </template>
