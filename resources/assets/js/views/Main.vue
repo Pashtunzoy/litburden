@@ -1,37 +1,54 @@
 <template>
     <div>
-        <section class="search-area hero">
+        <section class="jumbotron jumbotron-fluid">
             <!-- Hero content: will be in the middle -->
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 class="title">
-                        Share. Give. Win.
-                    </h1>
-                    <h2 class="subtitle">
-                        Australia's vibrant community one stop
-                    </h2>
-                </div>
-            </div>
+              <div class="container">
+                <h1 class="display-3 text-center">Share. Give. Win.</h1>
+                <p class="lead text-center">Australia's vibrant community one stop</p>
+              </div>
 
             <!-- Hero footer: will stick at the bottom -->
-            <div class="hero-foot">
-                <nav class="tabs">
-                    <div class="container is-overlay">
-                        <article class="notification is-dark">
-                            <SearchBar></SearchBar>
-                        </article>
-                    </div>
-                </nav>
-            </div>
+            <SearchBar></SearchBar>
         </section>
-
+        <div class="album text-muted">
+            <div class="container">
+                <div class="row">
+                    <MainContent v-for="advert in this.adverts" :advert="advert" :key="advert.id"></MainContent>
+                </div>
+            </div>
+        </div>
         <section class="container">
             <div class="columns">
                 <div class="column is-half is-offset-one-quarter">
-                    <router-link to="/ads" class="button is-medium">See all</router-link>
+                    <router-link to="/ads" class="btn btn-lg">See all</router-link>
                 </div>
             </div>
         </section>
-
     </div>
 </template>
+
+<script>
+import { get } from '../helpers/api';
+import flashMessage from '../helpers/flashMessage';
+
+export default {
+    created() {
+        get('/api/v1/ads')
+            .then((res) => {
+                if (res.data && res.status === 200) {
+                    this.adverts = res.data;
+                }
+            })
+            .catch((err) => {
+                flashMessage.error('Something went wrong!')
+            });
+    },
+    data() {
+        return {
+            adverts: []
+        }
+    }
+}
+</script>
+<style>
+</style>
