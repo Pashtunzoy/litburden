@@ -1,12 +1,12 @@
 <template>
-    <div class="field has-addons has-addons-centered">
-      <p class="control is-expanded">
-        <input class="input is-large" type="text" placeholder="I'm looking for...">
-      </p>
-      <p class="control">
-        <a class="button is-primary is-large">
-         <i class="fa fa-search" aria-hidden="true"></i>
-        </a>
-      </p>
+    <div class="container push-to-bottom">
+        <div class="input-group input-group-lg">
+            <input class="form-control" type="text" placeholder="I'm looking for..." aria-describedby="search place">
+            <span class="input-group-btn" id="search button">
+                <button type="button" class="btn btn-primary btn-lg">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
     </div>
 </template>
