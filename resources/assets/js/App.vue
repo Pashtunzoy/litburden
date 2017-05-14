@@ -1,20 +1,16 @@
 <template>
-    <div>
+    <section>
         <Navbar></Navbar>
-        <article class="message is-success" v-if="flash.success">
-          <div class="message-header">
-            <h1>{{flash.success}}</h1>
-          </div>
+        <article class="alert alert-success" v-if="flash.success">
+            {{flash.success}}
         </article>
 
-        <article class="message is-danger" v-if="flash.error">
-          <div class="message-header">
-            <h1>{{flash.error}}</h1>
-          </div>
-      </article>
+        <article class="alert alert-danger" v-if="flash.error">
+            {{flash.error}}
+        </article>
       <router-view></router-view>
       <Footer></Footer>
-    </div>
+  </section>
 </template>
 
 <script>
