@@ -64,7 +64,8 @@ export default {
                 if (err) {
                     const msg = err.response.data.msg;
                     msg ?
-                        flashMessage.setError(msg): flashMessage.setError('Sorry, Something went wrong while loggin In!');
+                        flashMessage.setError(msg):
+                        flashMessage.setError('Sorry, Something went wrong while loggin In!');
                     flashMessage.removeSuccess();
                     this.error = err.response.data;
                 }
