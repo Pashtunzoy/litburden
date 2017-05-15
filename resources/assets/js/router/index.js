@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import auth from '../store/auth';
+
 import Home from '../views/Home.vue';
 import Register from '../views/Auth/Register.vue';
 import Login from '../views/Auth/Login.vue';
@@ -8,13 +10,47 @@ import NewAdvert from '../views/Adverts/NewAdvert.vue';
 
 Vue.use(VueRouter);
 
+const authNeededRoute = function (to, from, next) {
+    auth.initialize();
+    if (auth.state.api_token && auth.state.user_id) {
+        return next();
+    }
+    return next(from.path);
+};
+
+const noNeedIfLogedIn = function (to, from, next) {
+    if (auth.state.api_token && auth.state.user_id) {
+        return next(from.path);
+    }
+    return next();
+};
+
+
 const router = new VueRouter({
     routes: [
         {path: '/', component: Home},
-        {path: '/register', component: Register},
-        {path: '/login', component: Login},
         {path: '/ads', component: Index},
-        {path: '/new', component: NewAdvert}
+        {
+            path: '/register',
+            component: Register,
+            beforeEnter: (to, from, next) => {
+                noNeedIfLogedIn(to, from, next);
+            }
+        },
+        {
+            path: '/login',
+            component: Login,
+            beforeEnter: (to, from, next) => {
+                noNeedIfLogedIn(to, from, next);
+            }
+        },
+        {
+            path: '/new',
+            component: NewAdvert,
+            beforeEnter: (to, from, next) => {
+                authNeededRoute(to, from, next);
+            }
+        }
     ]
 });
 
