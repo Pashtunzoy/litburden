@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Register from '../views/Auth/Register.vue';
 import Login from '../views/Auth/Login.vue';
 import Index from '../views/Adverts/Index.vue';
+import NewAdvert from '../views/Adverts/NewAdvert.vue';
 
 Vue.use(VueRouter);
 
@@ -12,7 +13,8 @@ const router = new VueRouter({
         {path: '/', component: Home},
         {path: '/register', component: Register},
         {path: '/login', component: Login},
-        {path: '/ads', component: Index}
+        {path: '/ads', component: Index},
+        {path: '/new', component: NewAdvert}
     ]
 });
 

@@ -28,7 +28,7 @@
                <a href="#" class="nav-link">Logout</a>
              </li>
              <li>
-                 <a class="btn btn-sm btn-success nav-link">Post an Ad</a>
+                 <router-link :to="shouldIReRoute" class="btn btn-sm btn-success nav-link">Post an Ad</router-link>
              </li>
            </ul>
          </div>
@@ -53,6 +53,12 @@
             authentic() {
                 if (this.auth.api_token && this.auth.user_id) return true;
                 return false;
+            },
+            shouldIReRoute() {
+                if (this.authentic) {
+                    return '/new';
+                }
+                return '/login';
             }
         },
         methods: {
