@@ -1,12 +1,12 @@
 <template>
     <section>
         <Navbar></Navbar>
-        <article class="alert alert-success" v-if="flash.success">
-            {{flash.success}}
-        </article>
+        <div class="alert alert-success" role="alert" v-if="flash.success">
+          <strong>Hurray!</strong> {{flash.success}}
+        </div>
 
-        <article class="alert alert-danger" v-if="flash.error">
-            {{flash.error}}
+        <article class="alert alert-danger" role="alert" v-if="flash.error">
+            <strong>Dang it!</strong> {{flash.error}}
         </article>
       <router-view></router-view>
       <Footer></Footer>
