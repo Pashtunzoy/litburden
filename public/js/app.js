@@ -497,8 +497,8 @@ module.exports = function normalizeComponent (
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_auth__ = __webpack_require__(3);
-/* harmony export (immutable) */ __webpack_exports__["b"] = get;
-/* harmony export (immutable) */ __webpack_exports__["a"] = post;
+/* harmony export (immutable) */ __webpack_exports__["a"] = get;
+/* harmony export (immutable) */ __webpack_exports__["b"] = post;
 
 
 console.log(__WEBPACK_IMPORTED_MODULE_1__store_auth__["a" /* default */].state);
@@ -11975,7 +11975,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.isFetching = true;
             this.error = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["a" /* post */])('/api/v1/ads', this.form).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["b" /* post */])('/api/v1/ads', this.form).then(function (res) {
                 if (res.data) {
                     __WEBPACK_IMPORTED_MODULE_1__helpers_flashMessage__["a" /* default */].setSuccess('You have successfuly logged In!');
                     __WEBPACK_IMPORTED_MODULE_1__helpers_flashMessage__["a" /* default */].removeError();
@@ -11999,6 +11999,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_api__ = __webpack_require__(4);
+//
 //
 //
 //
@@ -12006,10 +12008,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {};
-  }
+    created: function created() {
+        var _this = this;
+
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["a" /* get */])('api/v1/ads/' + this.$route.params.id).then(function (res) {
+            _this.adverts = res.data;
+            console.log(_this.adverts);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    },
+    data: function data() {
+        return {
+            adverts: {}
+        };
+    }
 });
 
 /***/ }),
@@ -12076,7 +12092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.isFetching = true;
             this.error = {};
             this.form.email = this.form.email.toLowerCase();
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__helpers_api__["a" /* post */])('/api/v1/login', this.form).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__helpers_api__["b" /* post */])('/api/v1/login', this.form).then(function (res) {
                 if (res.data.token) {
                     __WEBPACK_IMPORTED_MODULE_0__store_auth__["a" /* default */].set(res.data.token, res.data.user_id);
                     __WEBPACK_IMPORTED_MODULE_1__helpers_flashMessage__["a" /* default */].setSuccess('You have successfuly logged In!');
@@ -12184,7 +12200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.isFetching = true;
             this.error = {};
             this.form.email = this.form.email.toLowerCase();
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["a" /* post */])('/api/v1/register', this.form).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["b" /* post */])('/api/v1/register', this.form).then(function (res) {
                 if (res.data.msg === 'registerd') {
                     __WEBPACK_IMPORTED_MODULE_1__helpers_flashMessage__["a" /* default */].setSuccess('You have successfuly registered!');
                     _this.$router.push('/login');
@@ -12249,7 +12265,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["b" /* get */])('/api/v1/ads').then(function (res) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers_api__["a" /* get */])('/api/v1/ads').then(function (res) {
             if (res.data && res.status === 200) {
                 _this.adverts = res.data;
             }
@@ -13662,7 +13678,12 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n    hello\n")])
+  return _c('div', [_vm._v("\n    " + _vm._s(_vm.adverts.title) + "\n    "), _c('img', {
+    attrs: {
+      "src": _vm.adverts['image-url'],
+      "alt": ""
+    }
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
