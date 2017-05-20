@@ -7,6 +7,7 @@ import Register from '../views/Auth/Register.vue';
 import Login from '../views/Auth/Login.vue';
 import Index from '../views/Adverts/Index.vue';
 import NewAdvert from '../views/Adverts/NewAdvert.vue';
+import ShowAdvert from '../views/Adverts/Show.vue';
 
 Vue.use(VueRouter);
 
@@ -28,8 +29,13 @@ const noNeedIfLogedIn = function (to, from, next) {
 
 const router = new VueRouter({
     routes: [
-        {path: '/', component: Home},
-        {path: '/ads', component: Index},
+        // MAIN PAGE ROUTE
+        {
+            path: '/',
+            component: Home
+        },
+
+        // AUTH ROUTES
         {
             path: '/register',
             component: Register,
@@ -44,12 +50,23 @@ const router = new VueRouter({
                 noNeedIfLogedIn(to, from, next);
             }
         },
+
+        // ADVERTISMENT ROUTES
         {
-            path: '/new',
+            path: '/ads',
+            component: Index,
+        },
+        {
+            path: '/ad/new',
             component: NewAdvert,
             beforeEnter: (to, from, next) => {
                 authNeededRoute(to, from, next);
             }
+        },
+        {
+          path: '/ad/:id',
+          name: 'SHOWADVERT',
+          component: ShowAdvert
         }
     ]
 });

@@ -56,7 +56,7 @@
             },
             shouldIReRoute() {
                 if (this.authentic) {
-                    return '/new';
+                    return '/ad/new';
                 }
                 return '/login';
             }
