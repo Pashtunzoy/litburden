@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'SHOWADVERT', params: { id: advert.id }}">
         <div class="card">
             <img
-                class="card-img-top"
+                class="card-img-top main-content--img"
                 style="height: 280px;width: 100%;display: block;" :src="advert['image-url']"
                 alt="advert image">
             <div class="card-block">
