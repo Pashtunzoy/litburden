@@ -14,13 +14,19 @@
 </template>
 
 <script>
-    import flashMessage from './helpers/flashMessage';
+import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
+import flashMessage from './helpers/flashMessage';
 
-    export default {
-        data() {
-            return {
-                flash: flashMessage.state
-            }
+export default {
+    data() {
+        return {
+            flash: flashMessage.state
         }
+    },
+    components: {
+      Navbar,
+      Footer
     }
+}
 </script>

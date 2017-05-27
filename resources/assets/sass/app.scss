@@ -56,6 +56,11 @@ body {
   padding: .75rem;
   margin-bottom: 2rem;
   border: 0;
+  box-shadow: 2px 2px 2px 0 rgba(46,46,46,.1);
+  border-radius: 0 !important;
+  img {
+    background-color: aliceblue;
+  }
 }
 
 .card > .main-content--img {
@@ -132,12 +137,10 @@ body {
 
 .new-ad-form {
     margin: 20px auto;
-    border: 1px solid seashell;
-    border-radius: 10px;
+    border: none;
     padding: 37px;
+    background-color: #f7f7f7;
     box-shadow: 0px 0px 1px 0px darkgrey;
-    background-color: lightslategrey;
-    color: white;
 }
 
 

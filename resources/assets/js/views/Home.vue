@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import SearchBar from '../components/SearchBar.vue';
+import MainContent from '../components/MainContent.vue';
 import { get } from '../helpers/api';
 import flashMessage from '../helpers/flashMessage';
 
@@ -47,6 +49,10 @@ export default {
         return {
             adverts: []
         }
+    },
+    components: {
+      SearchBar,
+      MainContent
     }
 }
 </script>
