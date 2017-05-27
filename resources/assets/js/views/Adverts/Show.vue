@@ -15,12 +15,12 @@
                 <div class="card-block show--card__advertiser-description">
                     <h4 class="card-title">Advertiser's description</h4>
                     <div class="row">
-                        <p class="col card-text">Want: <p>{{ advert.want }}</p></p>
-                        <p class="col card-text">Give: <p>{{ advert.give }}</p></p>
+                        <p class="col">Want: {{ advert.want }}</p>
+                        <p class="col">Give: {{ advert.give }}</p>
                     </div>
                     <p class="card-text">Description: </p>
                     <p>{{ advert.body}}</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">Last updated {{ this.updatedAt }}</small></p>
                 </div>
             </div>
           </div>
@@ -38,6 +38,7 @@
 
 <script>
 import { get } from '../../helpers/api';
+import moment from 'moment';
 
 export default {
     created() {
@@ -53,6 +54,18 @@ export default {
     data() {
         return {
             advert: {}
+        }
+    },
+    computed: {
+        updatedAt() {
+            if (this.advert.updated_at) {
+                var date = new Date(this.advert.updated_at);
+                var day = date.getDate();
+                var month = `0${date.getMonth() + 1}`;
+                var year = date.getFullYear();
+                var newDate = `${year}${month}${day}`;
+                return moment(newDate, "YYYYMMDD").fromNow();
+            }
         }
     }
 }
