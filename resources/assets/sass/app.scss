@@ -3,17 +3,26 @@
  */
 /* @import "variables"; */
 /* @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; */
-
+@import "advert";
 
 
 body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */
+  background-color: rgba(211, 211, 211, 0.35);
 }
 
 .navbar {
   margin-bottom: 0;
 }
 
+/* Search Bar Related CSS */
+.search-bar {
+    margin: 10px auto;
+    padding: 0;
+}
+
+
+/* JUMBOTRON CUSTOM CSS */
 .jumbotron {
   padding-top: 6rem;
   padding-bottom: 6rem;
@@ -49,7 +58,7 @@ body {
   border: 0;
 }
 
-.card > img {
+.card > .main-content--img {
     height: 150px !important;
     margin-bottom: .75rem;
 }
