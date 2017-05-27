@@ -28,7 +28,7 @@
             <div class="card">
                 <div class="card-block">
                   <h4 class="card-title">Advertiser's Info</h4>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.1
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
             </div>
         </div>
