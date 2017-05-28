@@ -9,13 +9,13 @@
             <strong>Dang it!</strong> {{flash.error}}
         </article>
       <router-view></router-view>
-      <Footer></Footer>
+      <FooterComponent></FooterComponent>
   </section>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
-import Footer from './components/Footer.vue';
+import FooterComponent from './components/Footer.vue';
 import flashMessage from './helpers/flashMessage';
 
 export default {
@@ -26,7 +26,7 @@ export default {
     },
     components: {
       Navbar,
-      Footer
+      FooterComponent
     }
 }
 </script>
