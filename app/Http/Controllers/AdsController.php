@@ -8,7 +8,7 @@ use JWTAuth;
 class AdsController extends Controller {
 
     public function __construct() {
-        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+        $this->middleware('jwt.auth', ['except' => ['index', 'show', 'search']]);
     }
 
     public function index () {
@@ -25,6 +25,10 @@ class AdsController extends Controller {
             return ['msg' => 'Sorry Wrong Path'];
         }
         return $ad;
+    }
+
+    public function search () {
+        return Ad::search(request()->search)->get();
     }
 
 

@@ -5,9 +5,12 @@ namespace App;
 use App\User;
 use Carbon\Carbon;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model {
+
+    use Searchable;
 
     protected $fillable = ['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body'];
 
