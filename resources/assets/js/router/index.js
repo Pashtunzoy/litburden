@@ -54,6 +54,7 @@ const router = new VueRouter({
         // ADVERTISMENT ROUTES
         {
             path: '/ads',
+            'name': 'ADVERTS',
             component: Index,
         },
         {

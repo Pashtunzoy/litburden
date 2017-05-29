@@ -97,7 +97,6 @@ export default {
         get(`api/v1/ads/${this.$route.params.id}`)
             .then((res) => {
                 this.advert = res.data;
-                console.log(this.advert);
             })
             .catch((err) => {
                 console.log(err);
