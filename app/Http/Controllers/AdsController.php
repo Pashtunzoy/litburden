@@ -27,8 +27,9 @@ class AdsController extends Controller {
         return $ad;
     }
 
-    public function search () {
-        return Ad::search(request()->search)->get();
+    public function search ($query, $string) {
+        return $query->where('title', 'like', '%' .$string. '%')
+            ->orWhere('description', 'like', '%' .$string. '%');
     }
 
 
