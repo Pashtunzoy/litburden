@@ -28,9 +28,4 @@ class Ad extends Model {
             $query->whereYear('created_at', $year);
         }
     }
-
-    public function search ($query, $string) {
-        return $query->where('title', 'like', '%' .$string. '%')
-            ->orWhere('description', 'like', '%' .$string. '%');
-    }
 }
