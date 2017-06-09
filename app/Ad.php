@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Category;
 use Carbon\Carbon;
 
 use Laravel\Scout\Searchable;
@@ -16,6 +17,10 @@ class Ad extends Model {
 
     public function user() {
       return $this->belongsTo(User::class);
+    }
+
+    public function categories() {
+      return $this->belongsTo(Category::class);
     }
 
     public function scopeFilter($query, $filters)
