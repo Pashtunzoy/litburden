@@ -14,6 +14,7 @@ class AdsController extends Controller {
     public function index () {
         $ads = Ad::latest()
             ->filter(request(['month', 'year']))
+            ->with('category')
             ->get();
 
         return $ads;
@@ -21,14 +22,14 @@ class AdsController extends Controller {
 
 
     public function show (Ad $ad) {
-        if (! $ad) {
+        if (!$ad) {
             return ['msg' => 'Sorry Wrong Path'];
         }
         return $ad;
     }
 
     public function search () {
-        return Ad::search(request()->search)->get();
+        return Ad::search(request()->input('q'))->get();
     }
 
 
@@ -39,6 +40,7 @@ class AdsController extends Controller {
             'image-url' => 'required',
             'want' => 'required',
             'give' => 'required',
+            'category_name' => 'required',
             'body' => 'required',
         ]);
 
