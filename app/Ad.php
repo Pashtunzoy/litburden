@@ -13,13 +13,13 @@ class Ad extends Model {
 
     use Searchable;
 
-    protected $fillable = ['user_id', 'title', 'location', 'image-url', 'want', 'give', 'body'];
+    protected $fillable = ['user_id', 'title', 'location', 'category_name', 'image-url', 'want', 'give', 'body'];
 
     public function user() {
       return $this->belongsTo(User::class);
     }
 
-    public function categories() {
+    public function category() {
       return $this->belongsTo(Category::class);
     }
 
