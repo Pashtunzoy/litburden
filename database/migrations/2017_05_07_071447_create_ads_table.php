@@ -21,7 +21,7 @@ class CreateAdsTable extends Migration
             $table->string('image-url');
             $table->string('want');
             $table->string('give');
-            $table->integer('category_id')->unsigned();
+            $table->string('category_name')->references('name')->on('categories');
             $table->text('body');
             $table->timestamps();
         });

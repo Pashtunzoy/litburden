@@ -16,19 +16,20 @@ class AdsTableSeeder extends Seeder
 
         DB::table('ads')->delete();
 
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('en_AU');
 
+        $categoriesData = ["Art", "Transport", "Books", "Music", "Games", "Clothing", "Community", "Electronics", "Computer", "Tickets", "Home", "Garden", "Jobs"];
 
-        for($i = 0; $i < 10; $i++){
+        foreach ($categoriesData as $value) {
             Ad::create(array(
                 'user_id' => (int) rand(1, 4),
-                'category_id' => (int) rand(1, 13),
-                'title' => $faker->sentence,
-                'location' => $faker->streetSuffix .' '. $faker->cityPrefix() .', '. $faker->stateAbbr .', '. $faker->country,
+                'category_name' => $value,
+                'title' => ucfirst($faker->realText(30)),
+                'location' => $faker->streetSuffix() .' '. $faker->cityPrefix() .', '. $faker->stateAbbr .', Australia',
                 'image-url' => $faker->imageUrl($width = 800, $height = 400, 'cats'),
                 'want' => $faker->word,
                 'give' => $faker->word,
-                'body' => $faker->paragraph(3),
+                'body' => $faker->realText(200),
             ));
         }
     }
