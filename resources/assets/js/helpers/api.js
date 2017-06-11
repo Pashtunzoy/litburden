@@ -1,6 +1,5 @@
 import axios from 'axios';
 import auth from '../store/auth';
-console.log(auth.state);
 
 export function get(url) {
     return axios({
