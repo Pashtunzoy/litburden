@@ -4,6 +4,7 @@
             <input
                 class="form-control"
                 type="text"
+                @keyup.enter="search"
                 v-model="searchText"
                 placeholder="I'm looking for..."
                 aria-describedby="search place"
@@ -24,6 +25,11 @@ export default {
         return {
             searchText: ''
         }
-    }
+    },
+    methods: {
+      search() {
+        return this.$router.push({ name: 'ADVERTS', query: { search: this.searchText}});
+      }
+  }
 }
 </script>
