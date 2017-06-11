@@ -18,9 +18,8 @@ class CategoriesTableSeeder extends Seeder
 
         $categoriesData = ["Art", "Transport", "Books", "Music", "Games", "Clothing", "Community", "Electronics", "Computer", "Tickets", "Home", "Garden", "Jobs"];
 
-
-        foreach ($categoriesData as $value) {
-            Category::create([ 'name' => $value ]);
+        for ($i=0; $i < $categoriesData; $i++) {
+            Category::create([ 'name' => $categoriesData[$i] ]);
         }
     }
 }

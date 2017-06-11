@@ -34,5 +34,5 @@ class ExampleTest extends TestCase
 
         $this->assertArrayHasKey('body', $arrayItem);
     }
-    
+
 }
