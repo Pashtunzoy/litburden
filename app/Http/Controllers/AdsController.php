@@ -55,6 +55,7 @@ class AdsController extends Controller {
             'image-url' => request()['image-url'],
             'want' => request()->want,
             'give' => request()->give,
+            'category_name' => request()['category_name'],
             'body' => request()->body,
         ]);
 
