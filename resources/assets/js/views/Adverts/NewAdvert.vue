@@ -33,6 +33,7 @@
               <label for="categories" class="col-2 col-form-label">Category</label>
               <div class="col-10">
                   <select class="form-control" id="categories" v-model="form['category_name']">
+                      <option disabled value="">Please select a category</option>
                     <option v-for="category in categories">
                         {{ category }}
                     </option>
