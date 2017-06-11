@@ -30,6 +30,16 @@
               </div>
             </div>
             <div class="form-group row">
+              <label for="categories" class="col-2 col-form-label">Category</label>
+              <div class="col-10">
+                  <select class="form-control" id="categories" v-model="form['category_name']">
+                    <option v-for="category in categories">
+                        {{ category }}
+                    </option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group row">
               <label for="imageUrl" class="col-2 col-form-label">Image Url</label>
               <div class="col-10">
                 <input
@@ -98,12 +108,14 @@ import flashMessage from '../../helpers/flashMessage';
 export default {
     data() {
         return {
+            categories: ["Art", "Transport", "Books", "Music", "Games", "Clothing", "Community", "Electronics", "Computer", "Tickets", "Home", "Garden", "Jobs"],
             form: {
                 title: '',
                 location: '',
                 "image-url": '',
                 want: '',
                 give: '',
+                'category_name': '',
                 body: ''
             }
         }
