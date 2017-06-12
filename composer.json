@@ -4,6 +4,12 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+       {
+           "type": "vcs",
+           "url": "https://github.com/Pashtunzoy/laravel-scout-elastic"
+       }
+    ],
     "require": {
         "php": ">=5.6.4",
         "csanquer/pdo-service-provider": "~1.1dev",
@@ -12,8 +18,8 @@
         "laravel/framework": "5.4.*",
         "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
-        "tamayo/laravel-scout-elastic": "^3.0",
-        "tymon/jwt-auth": "0.5.11"
+        "tymon/jwt-auth": "0.5.11",
+        "Pashtunzoy/laravel-scout-aws-elastic": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
