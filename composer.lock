@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.29.2",
+            "version": "3.29.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1f19f74913a31fac8e98c24cef26040a16c88a33"
+                "reference": "f375f08b77da1a1dbf68e4a0384d65e7d9018639"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1f19f74913a31fac8e98c24cef26040a16c88a33",
-                "reference": "1f19f74913a31fac8e98c24cef26040a16c88a33",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f375f08b77da1a1dbf68e4a0384d65e7d9018639",
+                "reference": "f375f08b77da1a1dbf68e4a0384d65e7d9018639",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-06-09T18:57:25+00:00"
+            "time": "2017-06-12T23:32:58+00:00"
         },
         {
             "name": "csanquer/pdo-service-provider",
@@ -1515,12 +1515,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pashtunzoy/laravel-scout-elastic.git",
-                "reference": "9f8ec564b38bb2ed4e3060f320d1d76ef208e976"
+                "reference": "3092449c122f5010bae692842dc8b8a38a639610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pashtunzoy/laravel-scout-elastic/zipball/9f8ec564b38bb2ed4e3060f320d1d76ef208e976",
-                "reference": "9f8ec564b38bb2ed4e3060f320d1d76ef208e976",
+                "url": "https://api.github.com/repos/Pashtunzoy/laravel-scout-elastic/zipball/3092449c122f5010bae692842dc8b8a38a639610",
+                "reference": "3092449c122f5010bae692842dc8b8a38a639610",
                 "shasum": ""
             },
             "require": {
@@ -1558,7 +1558,7 @@
             "support": {
                 "source": "https://github.com/Pashtunzoy/laravel-scout-elastic/tree/master"
             },
-            "time": "2017-06-12 14:52:32"
+            "time": "2017-06-13 03:31:03"
         },
         {
             "name": "phpseclib/phpseclib",
